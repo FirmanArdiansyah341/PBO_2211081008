@@ -17,14 +17,15 @@ public class Latihan4 {
         char letter ;
         boolean result = false ;
         try{ 
-            System.out.print("str :"); 
+            System.out.print("str : "); 
             str = dataIn.readLine();
             System.out.print("number : "); 
             number = Integer.parseInt(dataIn.readLine());
             System.out.print("letter : "); 
-            letter = (char)dataIn.read();
+            letter = dataIn.readLine().charAt(0);
             System.out.print("result : "); 
-            result = dataIn.markSupported();
+            String input = dataIn.readLine();
+            result = Boolean.parseBoolean(input);
             
         }   catch( IOException e ){ 
         System.out.println("Error!"); 
