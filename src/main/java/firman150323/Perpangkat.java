@@ -28,27 +28,28 @@ public class Perpangkat {
         
         System.out.println("Menggunakan Perulangan For : ");
         for(int i=0;i<pangkat;i++){
-            hasil = pangkat * angka;
+            hasil *= angka;
         }
         System.out.println(angka + " pangkat " + pangkat + " adalah " + hasil);
         
         System.out.println("Menggunakan Perulangan While : ");
         
-        int a;
+        int a=1;
         int count=0;
         while(count<pangkat){
-            a = pangkat * angka;
+            a *=angka;
             count++;
         }     
-        System.out.println(angka + " pangkat " + pangkat + " adalah " + hasil);
+        System.out.println(angka + " pangkat " + pangkat + " adalah " +a);
 
         System.out.println("Menggunakan Perulangan Do-While : ");
         int banyak = 0;
+        int b=1;
          do {
-            a = pangkat * angka;
+            b *=angka;
             banyak++;
         
          } while(banyak<pangkat);
-        System.out.println(angka + " pangkat " + pangkat + " adalah " + hasil);
+        System.out.println(angka + " pangkat " + pangkat + " adalah " +b);
     }
 }
