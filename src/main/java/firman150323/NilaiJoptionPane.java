@@ -13,8 +13,8 @@ public class NilaiJoptionPane {
         int a=0,b=0,c=0;
         int avg;
         a = Integer.parseInt(JOptionPane.showInputDialog(null, "Nilai 1 : "));
-        b = Integer.parseInt(JOptionPane.showInputDialog(null, "Nilai 1 : "));
-        c = Integer.parseInt(JOptionPane.showInputDialog(null, "Nilai 1 : "));
+        b = Integer.parseInt(JOptionPane.showInputDialog(null, "Nilai 2 : "));
+        c = Integer.parseInt(JOptionPane.showInputDialog(null, "Nilai 3 : "));
         avg = (a+b+c)/3;
         
         JOptionPane.showMessageDialog(null, "Rata-rata nilai ujian: " +avg);
