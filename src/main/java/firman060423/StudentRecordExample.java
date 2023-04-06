@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package firman050423;
+package firman060423;
 
 /**
  *
  * @author ASUS iD
  */
-public class StudentRecordExample{
+public class StudentRecordExample {
     public static void main(String[] args){
         StudentRecord annaRecord = new StudentRecord();
         StudentRecord crisRecord = new StudentRecord(); 
@@ -29,10 +29,6 @@ public class StudentRecordExample{
         System.out.println("Nama    :   "+annaRecord.getName());
         System.out.println("Asal    :   "+annaRecord.getAddress());
         System.out.println("Umur    :   "+annaRecord.getAge());
-//        System.out.println("Nilai Matematika    :   "+annaRecord.getMathGrade());
-//        System.out.println("Nilai English       :   "+annaRecord.getEnglishGrade());
-//        System.out.println("Nilai Science       :   "+annaRecord.getScienceGrade());
-//        System.out.println("\nRata - Rata       :   "+annaRecord.getAverage());
 
         System.out.println("\nNama    :   "+crisRecord.getName());
         System.out.println("Asal    :   "+crisRecord.getAddress());
@@ -48,6 +44,7 @@ public class StudentRecordExample{
         aliRecord.print(70, 80, 90);
         
         //Menampilkan jumlah siswa 
-        System.out.println("Count : "+StudentRecord.getStudentCount());
+        System.out.println("Count = "+StudentRecord.getStudentCount());
     }
+
 }
