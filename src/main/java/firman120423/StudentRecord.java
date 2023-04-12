@@ -40,7 +40,7 @@ public class StudentRecord extends Person{
     }
     
      public StudentRecord(int age){
-        
+         this.age = age;
     }
     public String getName(){
         return name;
