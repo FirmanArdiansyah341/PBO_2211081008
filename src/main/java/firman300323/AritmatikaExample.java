@@ -9,7 +9,7 @@ package firman300323;
  * @author ASUS iD
  */
 
-class Aritmatika {
+class Aritmatika2 {
     public static int tambah(int a, int b) {
         return a + b;
     }
@@ -54,7 +54,7 @@ class Aritmatika {
 
 public class AritmatikaExample {
     public static void main(String[] args){
-        Aritmatika aritmatika = new Aritmatika();
+        Aritmatika2 aritmatika = new Aritmatika2();
         int c = aritmatika.tambah(10, 5);
         System.out.println("C : "+c);
         System.out.println("Ganjil? "+aritmatika.cekGanjil(c));
