@@ -26,21 +26,21 @@ public class Lingkaran implements Relation {
     }
 
     public boolean isGreater(Object a, Object b) {
-        double aLen = ((Line) a).getLength();
-        double bLen = ((Line) b).getLength();
+        double aLen = ((Lingkaran) a).getLength();
+        double bLen = ((Lingkaran) b).getLength();
         return (aLen > bLen);
     }
 
     public boolean isLess(Object a, Object b) {
-        double aLen = ((Line) a).getLength();
-        double bLen = ((Line) b).getLength();
+        double aLen = ((Lingkaran) a).getLength();
+        double bLen = ((Lingkaran) b).getLength();
         return (aLen < bLen);
 
     }
 
     public boolean isEqual(Object a, Object b) {
-        double aLen = ((Line) a).getLength();
-        double bLen = ((Line) b).getLength();
+        double aLen = ((Lingkaran) a).getLength();
+        double bLen = ((Lingkaran) b).getLength();
         return (aLen == bLen);
     }
 }
