@@ -14,23 +14,28 @@ import java.util.List;
 public class AnggotaDaoImpl implements AnggotaDao {
     private List<Anggota> data = new ArrayList<>();
     
+    @Override
     public Anggota save(Anggota anggota){
         data.add(anggota);
         return anggota;
     }
     
+    @Override
     public Anggota update (int index, Anggota anggota){
         data.set(index, anggota);
         return anggota;
     }
     
+    @Override
     public void delete (int index){
         data.remove(index);
     }
+    @Override
     public Anggota getAnggota(int index){
         return data.get(index);
     }
     
+    @Override
     public List<Anggota> getAllAnggota(){
         return data;
     }
