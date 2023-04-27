@@ -25,8 +25,19 @@ public class AnggotaController {
         anggota.setKodeAnggota(formAnggota.getTxtKodeAnggota().getText());
         anggota.setNamaAnggota(formAnggota.getTxtNamaAnggota().getText());
         anggota.setAlamat(formAnggota.getTxtAlamat().getText());
-        anggota.setJenisKelamin(formAnggota.getCboJenisKelamin().);
+        anggota.setJenisKelamin(formAnggota.getCboJenisKelamin().getSelectedItem().toString());
+
         anggotaDao.save(anggota);
         JOptionPane.showMessageDialog(formAnggota, "Insert Ok");
+    }
+    public void tampil() {
+        DefaultTableModel tabelModel = (DefaultTableModel) formAnggota.getTblAnggota().getModel();
+        tabelModel.setRowCount(0);
+        List<Anggota> list = anggotaDao.getAllAnggota();
+
+        for (Anggota anggota : list) {
+            Object[] row = {anggota.getKodeAnggota(), anggota.getNamaAnggota(), anggota.getAlamat(), anggota.getJenisKelamin()};
+            tabelModel.addRow(row);
+        }
     }
 }

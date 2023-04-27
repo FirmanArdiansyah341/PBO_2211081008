@@ -84,15 +84,15 @@ public class FormBuku extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(6, 139, 80, 30);
         getContentPane().add(txtKodeBuku);
-        txtKodeBuku.setBounds(279, 6, 280, 22);
+        txtKodeBuku.setBounds(89, 6, 470, 22);
         getContentPane().add(txtJudul);
-        txtJudul.setBounds(279, 34, 280, 22);
+        txtJudul.setBounds(89, 34, 470, 22);
         getContentPane().add(txtPengarang);
-        txtPengarang.setBounds(279, 68, 280, 22);
+        txtPengarang.setBounds(89, 68, 470, 22);
         getContentPane().add(txtPenerbit);
-        txtPenerbit.setBounds(279, 102, 280, 22);
+        txtPenerbit.setBounds(89, 102, 470, 22);
         getContentPane().add(txtTahun);
-        txtTahun.setBounds(279, 136, 280, 22);
+        txtTahun.setBounds(89, 136, 470, 22);
 
         btnInsert.setText("Insert");
         getContentPane().add(btnInsert);
@@ -118,13 +118,13 @@ public class FormBuku extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Kode Buku", "Judul", "Pengarang", "Penerbit", "Tiahun"
+                "Kode Buku", "Judul", "Pengarang", "Penerbit", "Tahun"
             }
         ));
         jScrollPane1.setViewportView(tblBuku);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 205, 561, 402);
+        jScrollPane1.setBounds(0, 210, 561, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
