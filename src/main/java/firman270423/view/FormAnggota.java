@@ -93,7 +93,7 @@ public class FormAnggota extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cboJenisKelamin);
-        cboJenisKelamin.setBounds(110, 100, 72, 22);
+        cboJenisKelamin.setBounds(110, 100, 120, 22);
 
         btnInsert.setText("Insert");
         btnInsert.addActionListener(new java.awt.event.ActionListener() {
