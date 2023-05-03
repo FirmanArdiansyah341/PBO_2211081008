@@ -17,7 +17,7 @@ public class Anggota {
     public Anggota(){
     
     }
-    public Anggota (String kodeAngggota, String namaAnggota, String alamat, String jenisKelamin){
+    public Anggota (String kodeAnggota, String namaAnggota, String alamat, String jenisKelamin){
         this.kodeAnggota = kodeAnggota;
         this.namaAnggota = namaAnggota;
         this.alamat = alamat;

@@ -55,5 +55,4 @@ public class Buku {
     public void setTahun(String tahun){
         this.tahun = tahun;
     }
-    
 }

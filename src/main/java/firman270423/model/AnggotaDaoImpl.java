@@ -11,6 +11,10 @@ import java.util.*;
 public class AnggotaDaoImpl implements AnggotaDao {
     List<Anggota> data = new ArrayList<>();
     
+    public AnggotaDaoImpl(){
+        data.add(new Anggota("98111","Ali","Padang","L"));
+        data.add(new Anggota("9811","Ana","Padang","P"));
+    }
     @Override
     public void save(Anggota anggota){
         data.add(anggota);

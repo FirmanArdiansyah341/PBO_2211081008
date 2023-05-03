@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package firman270423.view;
-
+import firman270423.controller.*;
 /**
  *
  * @author ASUS iD
@@ -13,22 +13,26 @@ public class FormBuku extends javax.swing.JFrame {
     /**
      * Creates new form FormBuku
      */
+    BukuController controller;
     public FormBuku() {
         initComponents();
+        controller = new BukuController(this);
+        controller.tampil();
+        controller.bersihForm();
     }
-    public javax.swing.JTextField getKodeBuku(){
+    public javax.swing.JTextField getTxtKodeBuku(){
         return txtKodeBuku;
     }
-    public javax.swing.JTextField getJudul(){
+    public javax.swing.JTextField getTxtJudul(){
         return txtJudul;
     }
-    public javax.swing.JTextField getPengarang(){
+    public javax.swing.JTextField getTxtPengarang(){
         return txtPengarang;
     }
-    public javax.swing.JTextField getPenerbit(){
+    public javax.swing.JTextField getTxtPenerbit(){
         return txtPenerbit;
     }
-    public javax.swing.JTextField getTahun(){
+    public javax.swing.JTextField getTxtTahun(){
         return txtTahun;
     }
     public javax.swing.JTable getTblBuku(){
@@ -95,14 +99,29 @@ public class FormBuku extends javax.swing.JFrame {
         txtTahun.setBounds(89, 136, 470, 22);
 
         btnInsert.setText("Insert");
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnInsert);
         btnInsert.setBounds(12, 170, 72, 23);
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnUpdate);
         btnUpdate.setBounds(166, 170, 72, 23);
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnDelete);
         btnDelete.setBounds(329, 170, 72, 23);
 
@@ -121,13 +140,45 @@ public class FormBuku extends javax.swing.JFrame {
                 "Kode Buku", "Judul", "Pengarang", "Penerbit", "Tahun"
             }
         ));
+        tblBuku.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBukuMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBuku);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 210, 561, 410);
 
-        pack();
+        setSize(new java.awt.Dimension(568, 452));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
+        // TODO add your handling code here:
+        controller.saveBuku();
+        controller.tampil();
+        controller.bersihForm();
+    }//GEN-LAST:event_btnInsertActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        controller.updateBuku();
+        controller.tampil();
+        controller.bersihForm();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        controller.delete();
+        controller.tampil();
+        controller.bersihForm();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBukuMouseClicked
+        // TODO add your handling code here:
+        controller.getBuku();
+    }//GEN-LAST:event_tblBukuMouseClicked
 
     /**
      * @param args the command line arguments
