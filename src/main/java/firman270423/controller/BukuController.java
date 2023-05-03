@@ -44,7 +44,6 @@ public class BukuController{
         buku.setPengarang(formBuku.getTxtPengarang().getText());
         buku.setPenerbit(formBuku.getTxtPenerbit().getText());
         buku.setTahun(formBuku.getTxtTahun().getText());
-        // buku.setJenisKelamin(formBuku.getCboJenisKelamin().getSelectedItem().toString());
         bukuDao.save(buku);
         JOptionPane.showMessageDialog(formBuku, "Insert Ok");
     }
@@ -56,7 +55,6 @@ public class BukuController{
         buku.setPengarang(formBuku.getTxtPengarang().getText());
         buku.setPenerbit(formBuku.getTxtPenerbit().getText());
         buku.setTahun(formBuku.getTxtTahun().getText());
-        // buku.setJenisKelamin(formBuku.getCboJenisKelamin().getSelectedItem().toString());
         bukuDao.update(index, buku);
         JOptionPane.showMessageDialog(formBuku, "Update Ok");
     }
@@ -87,7 +85,8 @@ public class BukuController{
                 buku1.getKodeBuku(),
                 buku1.getJudul(),
                 buku1.getPengarang(),
-                buku1.getPenerbit()
+                buku1.getPenerbit(),
+                buku1.getTahun()
             };
             tabelModel.addRow(row);
         }

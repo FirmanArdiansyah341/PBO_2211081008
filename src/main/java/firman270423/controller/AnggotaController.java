@@ -26,8 +26,6 @@ public class AnggotaController{
         formAnggota.getTxtKodeAnggota().setText("");
         formAnggota.getTxtNamaAnggota().setText("");
         formAnggota.getTxtAlamat().setText("");
-//        formAnggota.getCboJenisKelamin().setSelectedIndex(0);
-//        formAnggota.getCboJenisKelamin().setSelectedIndex(0);
     }
     public void isiCboJenisKelamin(){
         formAnggota.getCboJenisKelamin().removeAllItems();

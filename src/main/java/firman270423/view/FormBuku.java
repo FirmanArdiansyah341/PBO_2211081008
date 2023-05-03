@@ -126,15 +126,17 @@ public class FormBuku extends javax.swing.JFrame {
         btnDelete.setBounds(329, 170, 72, 23);
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCancel);
         btnCancel.setBounds(478, 170, 72, 23);
 
         tblBuku.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Kode Buku", "Judul", "Pengarang", "Penerbit", "Tahun"
@@ -179,6 +181,11 @@ public class FormBuku extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.getBuku();
     }//GEN-LAST:event_tblBukuMouseClicked
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        controller.bersihForm();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
