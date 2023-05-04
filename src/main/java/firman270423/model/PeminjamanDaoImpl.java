@@ -15,7 +15,7 @@ public class PeminjamanDaoImpl implements PeminjamanDao {
          AnggotaDao daoAnggota = new AnggotaDaoImpl();
          BukuDao daoBuku = new BukuDaoImpl();
          data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(0),"27-02-2023","28-02-2023"));
-         data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(1),"12-02-2022","17-02-2022"));
+         data.add(new Peminjaman(daoAnggota.getAnggota(0),daoBuku.getBuku(1),"12-03-2022","17-03-2022"));
      }
     @Override
     public void save(Peminjaman peminjaman){
