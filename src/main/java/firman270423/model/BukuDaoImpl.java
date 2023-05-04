@@ -12,8 +12,8 @@ public class BukuDaoImpl implements BukuDao{
     List<Buku> data = new ArrayList<>();
     
     public BukuDaoImpl(){
-        data.add(new Buku("98111","Habis Gelap Terbitlah Terang","Ra. Kartini","Airlangga","2006"));
-        data.add(new Buku("98112","Petualang Bolang","Udiin","Airlangga","2013"));
+        data.add(new Buku("98123","Habis Gelap Terbitlah Terang","Ra. Kartini","Airlangga","2006"));
+        data.add(new Buku("52789","Petualang Bolang","Udiin","Airlangga","2013"));
     }
     
     @Override
