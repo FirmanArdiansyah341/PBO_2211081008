@@ -104,6 +104,11 @@ public class FormPeminjaman extends javax.swing.JFrame {
         cboBuku.setBounds(127, 41, 388, 22);
 
         txtTglPinjam.setText("jTextField1");
+        txtTglPinjam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTglPinjamActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtTglPinjam);
         txtTglPinjam.setBounds(127, 77, 388, 22);
 
@@ -217,6 +222,10 @@ public class FormPeminjaman extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.getPeminjaman();
     }//GEN-LAST:event_tblPeminjamanMouseClicked
+
+    private void txtTglPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTglPinjamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTglPinjamActionPerformed
 
     /**
      * @param args the command line arguments
