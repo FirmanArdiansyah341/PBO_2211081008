@@ -29,14 +29,7 @@ public class BukuController{
         formBuku.getTxtPengarang().setText("");
         formBuku.getTxtPenerbit().setText("");
         formBuku.getTxtTahun().setText("");
-//        formBuku.getCboJenisKelamin().setSelectedIndex(0);
-//        formBuku.getCboJenisKelamin().setSelectedIndex(0);
     }
-    // public void isiCboJenisKelamin(){
-    //     formBuku.getCboJenisKelamin().removeAllItems();
-    //     formBuku.getCboJenisKelamin().addItem("L");
-    //     formBuku.getCboJenisKelamin().addItem("P");
-    // }
     public void saveBuku(){
         buku = new Buku();
         buku.setKodeBuku(formBuku.getTxtKodeBuku().getText());
