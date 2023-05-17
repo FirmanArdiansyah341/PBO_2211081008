@@ -75,11 +75,11 @@ public class FormPeminjaman extends javax.swing.JFrame {
 
         jLabel2.setText("Kode Buku");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 40, 57, 16);
+        jLabel2.setBounds(10, 50, 57, 16);
 
         jLabel3.setText("Tanggal Pinjam");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 70, 81, 16);
+        jLabel3.setBounds(10, 80, 82, 16);
 
         jLabel4.setText("Tanggal Kembali");
         getContentPane().add(jLabel4);
@@ -92,7 +92,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cboAnggota);
-        cboAnggota.setBounds(127, 7, 388, 22);
+        cboAnggota.setBounds(130, 10, 388, 22);
 
         cboBuku.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboBuku.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +195,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        controller.savePeminjaman();
+        controller.updatePeminjaman();
         controller.tampil();
         controller.bersihForm();
 
@@ -204,6 +204,8 @@ public class FormPeminjaman extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         controller.deletePeminjaman();
+        controller.tampil();
+        controller.bersihForm();
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
