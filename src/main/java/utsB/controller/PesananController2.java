@@ -67,7 +67,19 @@ public class PesananController2 {
         pesanan.setTglPesan(formPesanan.getTxtTglPesan().getText());
         pesanan.setHarga(formPesanan.getTxtHarga().getText());
         pesanan.setOngkosKirim(formPesanan.getTxtOngkosKirim().getText());
-        pesanan.setDiskon(formPesanan.getTxtDiskon().getText());
+        
+            // Menghitung total belanja
+        double harga = Double.parseDouble(formPesanan.getTxtHarga().getText());
+        double ongkosKirim = Double.parseDouble(formPesanan.getTxtOngkosKirim().getText());
+        double total = harga + ongkosKirim;
+
+            // Mengecek apakah total belanja melebihi 100.000
+        if (total > 100000) {
+            // Menghitung diskon sebesar 2%
+                pesanan.setDiskon("2%");
+            } else {
+                 pesanan.setDiskon("0%"); // Tidak ada diskon
+         }
         pesananDao.update(index,pesanan);
         JOptionPane.showMessageDialog(formPesanan, "Update Ok");
     }
@@ -100,7 +112,7 @@ public class PesananController2 {
                pesanan1.getTglPesan(),
                pesanan1.getHarga(),
                pesanan1.getOngkosKirim(),
-               pesanan1.getDiskon()
+               pesanan1.getDiskon(),
             };
             tabelModel.addRow(row);
         }
