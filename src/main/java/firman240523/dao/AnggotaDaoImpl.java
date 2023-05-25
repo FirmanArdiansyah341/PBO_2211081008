@@ -4,7 +4,7 @@
  */
 package firman240523.dao;
 
-import firman240523.model.Anggota;
+import firman240523.model.*;
 import java.util.*;
 import java.sql.*;
 
@@ -83,5 +83,4 @@ public class AnggotaDaoImpl implements AnggotaDao {
         }
         return list;
     }
-    
 }
