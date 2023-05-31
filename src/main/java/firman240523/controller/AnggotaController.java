@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -72,5 +73,32 @@ public class AnggotaController {
             Logger.getLogger(AnggotaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public void getAnggota(){
+        try {
+            String nobp = formAnggota.getTblAnggota().getValueAt(formAnggota.getTblAnggota()
+                    .getSelectedRow(),0).toString();
+            anggota = dao.getAnggota(nobp);
+            if(anggota != null){
+                formAnggota.getTxtNobp().setText(anggota.getNobp());
+                formAnggota.getTxtNama().setText(anggota.getNama());
+                formAnggota.getTxtAlamat().setText(anggota.getAlamat());
+                formAnggota.getCboJenisKelamin().setSelectedItem(anggota.getJenisKelamin());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnggotaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void update(){
+        try {
+            anggota = new Anggota();
+            anggota.setNobp(formAnggota.getTxtNobp().getText());
+            anggota.setNama(formAnggota.getTxtNama().getText());
+            anggota.setAlamat(formAnggota.getTxtAlamat().getText());
+            anggota.setJenisKelamin(formAnggota.getCboJenisKelamin().getSelectedItem().toString());
+            dao.update(anggota);
+            JOptionPane.showMessageDialog(formAnggota, "Entri Data Ok");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(formAnggota, ex.getMessage());
+        }
+    }
 }

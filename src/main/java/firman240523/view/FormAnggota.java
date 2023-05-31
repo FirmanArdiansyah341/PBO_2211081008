@@ -135,6 +135,11 @@ public class FormAnggota extends javax.swing.JFrame {
         btnInsert.setBounds(10, 140, 72, 23);
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnUpdate);
         btnUpdate.setBounds(100, 140, 72, 23);
 
@@ -162,6 +167,11 @@ public class FormAnggota extends javax.swing.JFrame {
                 "No. Bp", "Nama", "Alamat", "Jenis Kelamin"
             }
         ));
+        tblAnggota.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAnggotaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblAnggota);
 
         getContentPane().add(jScrollPane1);
@@ -186,6 +196,18 @@ public class FormAnggota extends javax.swing.JFrame {
         controller.tampilTabel();
         controller.clearForm();
     }//GEN-LAST:event_btnInsertActionPerformed
+
+    private void tblAnggotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAnggotaMouseClicked
+        // TODO add your handling code here:
+        controller.getAnggota();
+    }//GEN-LAST:event_tblAnggotaMouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        controller.update();
+        controller.tampilTabel();
+        controller.clearForm();
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
