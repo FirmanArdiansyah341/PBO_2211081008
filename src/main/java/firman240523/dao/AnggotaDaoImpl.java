@@ -19,6 +19,10 @@ public class AnggotaDaoImpl implements AnggotaDao {
         this.connection = connection;
     }
 
+    public AnggotaDaoImpl() {
+        
+    }
+
     @Override
     public void insert(Anggota anggota) throws SQLException {
         String sql = "insert into anggota values (?,?,?,?)";

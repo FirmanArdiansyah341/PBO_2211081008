@@ -4,7 +4,12 @@
  */
 package firman240523.view;
 
+import firman240523.controller.AnggotaController;
+import firman240523.model.Anggota;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -18,10 +23,12 @@ public class FormAnggota extends javax.swing.JFrame {
     /**
      * Creates new form FormAnggota
      */
-    Connection connection;
-    public FormAnggota() {
+     AnggotaController controller;
+    public FormAnggota() throws SQLException {
         initComponents();
-        
+        controller = new AnggotaController(this);
+        controller.clearForm();
+        controller.tampilTabel();
     }
 
     public JComboBox<String> getCboJenisKelamin() {
@@ -94,6 +101,11 @@ public class FormAnggota extends javax.swing.JFrame {
         jLabel4.setBounds(10, 100, 80, 16);
 
         txtNobp.setText("jTextField1");
+        txtNobp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNobpActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtNobp);
         txtNobp.setBounds(90, 10, 360, 22);
 
@@ -114,6 +126,11 @@ public class FormAnggota extends javax.swing.JFrame {
         cboJenisKelamin.setBounds(90, 100, 110, 22);
 
         btnInsert.setText("Insert");
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnInsert);
         btnInsert.setBounds(10, 140, 72, 23);
 
@@ -148,14 +165,27 @@ public class FormAnggota extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblAnggota);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 170, 433, 364);
+        jScrollPane1.setBounds(0, 170, 452, 402);
 
-        setBounds(0, 0, 465, 396);
+        setSize(new java.awt.Dimension(465, 396));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
+        controller.clearForm();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void txtNobpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNobpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNobpActionPerformed
+
+    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
+        // TODO add your handling code here:
+        controller.insert();
+        controller.tampilTabel();
+        controller.clearForm();
+    }//GEN-LAST:event_btnInsertActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,7 +217,11 @@ public class FormAnggota extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormAnggota().setVisible(true);
+                try {
+                    new FormAnggota().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FormAnggota.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
