@@ -42,6 +42,15 @@ public class DatabaseHelper {
                 anggota.setJenisKelamin("L");
                 AnggotaDao dao = new AnggotaDaoImpl(connection);
                 dao.insert(anggota);
+                JOptionPane.showMessageDialog(null, "Entri Ok");
+                
+                Buku buku = new Buku();
+                buku.setKodeBuku("2210");
+                buku.setJudulBuku("Udin yang petot");
+                buku.setPengarang("Ajo");
+                buku.setPenerbit("Suka-suka");
+                BukuDao dao2 = new BukuDaoImpl(connection);
+                dao2.insert(buku);
                  JOptionPane.showMessageDialog(null, "Entri Ok");
         
           } catch(SQLException ex){

@@ -5,10 +5,8 @@
 package firman240523.dao;
 
 import firman240523.model.Buku;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 
 /**
  *
@@ -48,21 +46,46 @@ public class BukuDaoImpl implements BukuDao{
     }
 
     @Override
-    public void delete(String nobp) throws SQLException {
-      String sql = "delete from anggota where  kodebuku=?";
+    public void delete(String kodeBuku) throws SQLException {
+      String sql = "delete from buku where  kodebuku=?";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, kodebuku);
+        ps.setString(1, kodeBuku);
         ps.executeUpdate();   
     }
 
     @Override
-    public Buku getBuku(String nobp) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Buku getBuku(String kodeBuku) throws SQLException {
+      String sql = "select * from buku where kodebuku=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, kodeBuku);
+        ResultSet rs = ps.executeQuery();
+        Buku buku = null;
+        if(rs.next()){
+            buku = new Buku();
+            buku.setKodeBuku(rs.getString(1));
+            buku.setJudulBuku(rs.getString(2));
+            buku.setPengarang(rs.getString(3));
+            buku.setPenerbit(rs.getString(4));
+        }
+        return buku;
     }
 
     @Override
     public List<Buku> getAll() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       String sql = "select * from buku";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        Buku buku = null;
+        ResultSet rs = ps.executeQuery();
+        List<Buku> list = new ArrayList<>();
+        while(rs.next()){
+            buku = new Buku();
+            buku.setKodeBuku(rs.getString(1));
+            buku.setJudulBuku(rs.getString(2));
+            buku.setPengarang(rs.getString(3));
+            buku.setPenerbit(rs.getString(4));
+            list.add(buku);
+        }
+        return list;
     }
     
 }
