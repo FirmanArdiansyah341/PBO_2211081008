@@ -90,15 +90,23 @@ public class AnggotaController {
     }
     public void update(){
         try {
-            anggota = new Anggota();
             anggota.setNobp(formAnggota.getTxtNobp().getText());
             anggota.setNama(formAnggota.getTxtNama().getText());
             anggota.setAlamat(formAnggota.getTxtAlamat().getText());
             anggota.setJenisKelamin(formAnggota.getCboJenisKelamin().getSelectedItem().toString());
             dao.update(anggota);
-            JOptionPane.showMessageDialog(formAnggota, "Entri Data Ok");
+            JOptionPane.showMessageDialog(formAnggota, "Update Data Ok");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(formAnggota, ex.getMessage());
+        }
+    }
+    public void delete(){
+        try {
+            String nobp = formAnggota.getTxtNobp().getText();
+            dao.delete(nobp);
+            JOptionPane.showMessageDialog(formAnggota, "Delete Ok");
+        } catch (SQLException ex) {
+            Logger.getLogger(AnggotaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

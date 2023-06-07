@@ -36,18 +36,18 @@ public class AnggotaDaoImpl implements AnggotaDao {
 
     @Override
     public void update(Anggota anggota) throws SQLException {
-        String sql = "update anggota set nama=?, alamat=?, jeniskelamin=?, where nobp=?";
+        String sql = "update anggota set nama=?, alamat=?, jenis_kelamin=? where nobp=?";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, anggota.getNobp());
-        ps.setString(2, anggota.getNama());
-        ps.setString(3, anggota.getAlamat());
-        ps.setString(4,anggota.getJenisKelamin());
+        ps.setString(1, anggota.getNama());
+        ps.setString(2, anggota.getAlamat());
+        ps.setString(3,anggota.getJenisKelamin());
+        ps.setString(4, anggota.getNobp());
         ps.executeUpdate();
     }
 
     @Override
     public void delete(String nobp) throws SQLException {
-        String sql = "delete from anggota where nobp";
+        String sql = "delete from anggota where  nobp=?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, nobp);
         ps.executeUpdate();   

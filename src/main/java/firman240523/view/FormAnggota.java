@@ -144,6 +144,11 @@ public class FormAnggota extends javax.swing.JFrame {
         btnUpdate.setBounds(100, 140, 72, 23);
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnDelete);
         btnDelete.setBounds(190, 140, 72, 23);
 
@@ -208,6 +213,13 @@ public class FormAnggota extends javax.swing.JFrame {
         controller.tampilTabel();
         controller.clearForm();
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        controller.delete();
+        controller.tampilTabel();
+        controller.clearForm();
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
