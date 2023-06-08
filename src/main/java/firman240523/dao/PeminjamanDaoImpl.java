@@ -58,7 +58,23 @@ public class PeminjamanDaoImpl implements PeminjamanDao {
 
     @Override
     public Peminjaman getPeminjaman(String kodePeminjaman, String nobp, String kodeBuku) throws SQLException {
-       
+        String sql = "SELECT * FROM peminjaman WHERE kode_peminjaman = ? AND nobp = ? AND kode_buku = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, kodePeminjaman);
+        ps.setString(2, nobp);
+        ps.setString(3, kodeBuku);
+        ResultSet rs = ps.executeQuery();
+
+        Peminjaman peminjaman = null;
+        if (rs.next()) {
+        peminjaman = new Peminjaman();
+        peminjaman.setKodePeminjaman(rs.getString(1));
+        peminjaman.setNobp(rs.getString(2));
+        peminjaman.setKodeBuku(rs.getString(3));
+        peminjaman.setTglPinjam(rs.getString(4));
+        peminjaman.setTglKembali(rs.getString(5));
+        }
+        return peminjaman;
     }
 
     @Override
