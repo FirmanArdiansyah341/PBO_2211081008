@@ -11,9 +11,9 @@ import java.util.List;
  * @author ASUS iD
  */
 public interface PeminjamanDao {
-    void insert(Peminjaman peminjaman) throws SQLException;
-    void update(Peminjaman peminjaman) throws SQLException;
-    void delete(String nobp) throws SQLException;
-    Peminjaman getAnggota(String nobp) throws SQLException;
+    void insert(Peminjaman peminjaman, Anggota anggota, Buku buku) throws SQLException;
+    void update(Peminjaman peminjaman, Anggota anggota, Buku buku) throws SQLException;
+    void delete(String kodePeminjaman) throws SQLException;
+    Peminjaman getPeminjaman(String kodePeminjaman, String nobp, String kodeBuku) throws SQLException;
     public List<Peminjaman> getAll() throws SQLException;
 }

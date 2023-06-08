@@ -13,6 +13,7 @@ public class Peminjaman {
     private String kodeBuku;
     private String tglPinjam;
     private String tglKembali;
+    private String kodePeminjaman;
     
     public Peminjaman(){
     
@@ -54,6 +55,14 @@ public class Peminjaman {
 
     public void setTglKembali(String tglKembali) {
         this.tglKembali = tglKembali;
+    }
+
+    public String getKodePeminjaman() {
+        return kodePeminjaman;
+    }
+
+    public void setKodePeminjaman(String kodePeminjaman) {
+        this.kodePeminjaman = kodePeminjaman;
     }
     
 }
