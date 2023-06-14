@@ -17,8 +17,6 @@ public class PeminjamanDaoImpl implements PeminjamanDao {
     
     public PeminjamanDaoImpl(Connection connection){
         this.connection = connection;
-        AnggotaDao daoAnggota = new AnggotaDaoImpl();
-        BukuDao daoBuku = new BukuDaoImpl();
     }
 
     public PeminjamanDaoImpl() {
@@ -26,82 +24,69 @@ public class PeminjamanDaoImpl implements PeminjamanDao {
     }
 
     @Override
-    public void insert(Peminjaman peminjaman, Anggota anggota, Buku buku) throws SQLException {
-        String sql = "insert into peminjaman values (?,?,?,?,?)";
+    public void insert(Peminjaman peminjaman) throws SQLException {
+        String sql = "insert into peminjaman values (?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, peminjaman.getKodePeminjaman());
-        ps.setString(2, anggota.getNobp());
-        ps.setString(3, buku.getKodeBuku());
-        ps.setString(4,peminjaman.getTglPinjam());
-        ps.setString(5,peminjaman.getTglKembali());
-    }
-
-    @Override
-    public void update(Peminjaman peminjaman, Anggota anggota, Buku buku) throws SQLException {
-       String sql = "update peminjaman set nobp=?, kodebuku=?, tglpinjam=?, tglkembali=? where kode_peminjaman=?";
-        PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, buku.getKodeBuku());
-        ps.setString(2, anggota.getNobp());
-        ps.setString(3,peminjaman.getTglPinjam());
+        ps.setString(1, peminjaman.getNobp());
+        ps.setString(2, peminjaman.getKodeBuku());
+        ps.setString(3, peminjaman.getTglPinjam());
         ps.setString(4,peminjaman.getTglKembali());
-        ps.setString(5, peminjaman.getKodePeminjaman());
         ps.executeUpdate();
     }
 
     @Override
-    public void delete(String kodePeminjaman) throws SQLException {
-        String sql = "delete from peminjaman where  kode_peminjaman=?";
+    public void update(Peminjaman peminjaman) throws SQLException {
+        String sql = "update peminjaman set tglkembali=? " + "where nobp=? and kodebuku=? and tglpinjam=?";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, kodePeminjaman);
-        ps.executeUpdate();  
+        ps.setString(1, peminjaman.getTglKembali());
+        ps.setString(2, peminjaman.getNobp());
+        ps.setString(3, peminjaman.getKodeBuku());
+        ps.setString(4,peminjaman.getTglPinjam());
+        ps.executeUpdate();
     }
 
     @Override
-    public Peminjaman getPeminjaman(String kodePeminjaman, String nobp, String kodeBuku) throws SQLException {
-        String sql = "SELECT * FROM peminjaman WHERE kode_peminjaman = ? AND nobp = ? AND kode_buku = ?";
+    public void delete(Peminjaman peminjaman) throws SQLException {
+        String sql = "delete from peminjaman" +"where  nobp=? and kodebuku=? and tglpinjam=?";
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, kodePeminjaman);
-        ps.setString(2, nobp);
-        ps.setString(3, kodeBuku);
+        ps.setString(1, peminjaman.getNobp());
+        ps.setString(2, peminjaman.getKodeBuku());
+        ps.setString(3, peminjaman.getTglPinjam());
+        ps.executeUpdate();   
+    }
+    @Override
+    public Peminjaman getPeminjaman(String nopb, String kodebuku, String tglPinjam) throws SQLException {
+        String sql = "select * from peminjaman" + "where nobp=? and kodebuku=? and tglpinjam=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, nopb);
+        ps.setString(2, kodebuku);
+        ps.setString(3,tglPinjam);
         ResultSet rs = ps.executeQuery();
-
         Peminjaman peminjaman = null;
-        if (rs.next()) {
-        peminjaman = new Peminjaman();
-        peminjaman.setKodePeminjaman(rs.getString(1));
-        peminjaman.setNobp(rs.getString(2));
-        peminjaman.setKodeBuku(rs.getString(3));
-        peminjaman.setTglPinjam(rs.getString(4));
-        peminjaman.setTglKembali(rs.getString(5));
+        if(rs.next()){
+            peminjaman = new Peminjaman();
+            peminjaman.setNobp(rs.getString(1));
+            peminjaman.setKodeBuku(rs.getString(2));
+            peminjaman.setTglPinjam(rs.getString(3));
+            peminjaman.setTglKembali(rs.getString(4));
         }
         return peminjaman;
     }
-
     @Override
     public List<Peminjaman> getAll() throws SQLException {
-    String sql = "SELECT * FROM peminjaman";
-    PreparedStatement ps = connection.prepareStatement(sql);
-    ResultSet rs = ps.executeQuery();
-    List<Peminjaman> list = new ArrayList<>();
-
-    while (rs.next()) {
-        Peminjaman peminjaman = new Peminjaman();
-        Anggota anggota = new Anggota();
-        Buku buku = new Buku();
-
-        peminjaman.setKodePeminjaman(rs.getString(1));
-        anggota.setNobp(rs.getString(2));
-        buku.setKodeBuku(rs.getString(3));
-
-        peminjaman.setNobp(anggota.getNobp());
-        peminjaman.setKodeBuku(buku.getKodeBuku());
-
-
-        peminjaman.setTglPinjam(rs.getString(4));
-        peminjaman.setTglKembali(rs.getString(5));
-
-        list.add(peminjaman);
+     String sql = "select * from peminjaman";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        Peminjaman peminjaman;
+        ResultSet rs = ps.executeQuery();
+        List<Peminjaman> list = new ArrayList<>();
+        while(rs.next()){
+            peminjaman = new Peminjaman();
+            peminjaman.setNobp(rs.getString(1));
+            peminjaman.setKodeBuku(rs.getString(2));
+            peminjaman.setTglPinjam(rs.getString(3));
+            peminjaman.setTglKembali(rs.getString(4));
+            list.add(peminjaman);
         }
-         return list;
-    }    
-}
+        return list;
+    }
+}    

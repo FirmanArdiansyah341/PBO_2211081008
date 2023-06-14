@@ -18,7 +18,7 @@ public class Peminjaman {
     public Peminjaman(){
     
     }
-    public Peminjaman(String nobp, String kodeBuku, String tglPinjam, String tglKembali){
+   public Peminjaman(String nobp, String kodeBuku, String tglPinjam, String tglKembali){
         this.nobp = nobp;
         this.kodeBuku = kodeBuku;
         this.tglPinjam = tglPinjam;
