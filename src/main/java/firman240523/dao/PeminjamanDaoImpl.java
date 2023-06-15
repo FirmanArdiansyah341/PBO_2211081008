@@ -47,7 +47,7 @@ public class PeminjamanDaoImpl implements PeminjamanDao {
 
     @Override
     public void delete(Peminjaman peminjaman) throws SQLException {
-        String sql = "delete from peminjaman" +"where  nobp=? and kodebuku=? and tglpinjam=?";
+        String sql = "delete from peminjaman " +"where  nobp=? and kodebuku=? and tglpinjam=?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, peminjaman.getNobp());
         ps.setString(2, peminjaman.getKodeBuku());
@@ -56,7 +56,7 @@ public class PeminjamanDaoImpl implements PeminjamanDao {
     }
     @Override
     public Peminjaman getPeminjaman(String nopb, String kodebuku, String tglPinjam) throws SQLException {
-        String sql = "select * from peminjaman" + "where nobp=? and kodebuku=? and tglpinjam=?";
+        String sql = "select * from peminjaman " + "where nobp=? and kodebuku=? and tglpinjam=?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, nopb);
         ps.setString(2, kodebuku);
