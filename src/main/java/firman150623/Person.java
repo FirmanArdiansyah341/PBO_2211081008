@@ -23,6 +23,7 @@ public class Person {
     }
 
     public String getName() {
+        System.out.println("Parent: getName"); 
         return name;
     }
 

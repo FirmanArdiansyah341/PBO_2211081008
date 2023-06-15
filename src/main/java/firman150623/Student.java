@@ -10,9 +10,15 @@ package firman150623;
  */
 public class Student extends Person {
     public Student(){ 
+        super("Ani","Padang");
     System.out.println("Inside Student:Constructor"); 
     //beberapa kode di sini 
     }
+    @Override
+     public String getName(){ 
+        System.out.println("Student: getName"); 
+        return name; 
+ }
     public static void main(String[] args) {
         Student anna = new Student();
         anna.name = "Budi";
