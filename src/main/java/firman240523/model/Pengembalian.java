@@ -8,20 +8,24 @@ package firman240523.model;
  *
  * @author ASUS iD
  */
-public class Peminjaman {
+public class Pengembalian {
     private String nobp;
     private String kodeBuku;
     private String tglPinjam;
-    private String tglKembali;
+    private String tglDikembalikan;
+    private String terlambat;
+    private String denda;
     
-    public Peminjaman(){
+    public Pengembalian(){
     
     }
-   public Peminjaman(String nobp, String kodeBuku, String tglPinjam, String tglKembali){
+    public Pengembalian (String nobp, String kodeBuku, String tglPinjam, String tglDikembalikan, String terlambat, String denda){
         this.nobp = nobp;
         this.kodeBuku = kodeBuku;
         this.tglPinjam = tglPinjam;
-        this.tglKembali = tglKembali;
+        this.tglDikembalikan = tglDikembalikan;
+        this.terlambat = terlambat;
+        this.denda = denda;
     }
 
     public String getNobp() {
@@ -48,11 +52,28 @@ public class Peminjaman {
         this.tglPinjam = tglPinjam;
     }
 
-    public String getTglKembali() {
-        return tglKembali;
+    public String getTglDikembalikan() {
+        return tglDikembalikan;
     }
 
-    public void setTglKembali(String tglKembali) {
-        this.tglKembali = tglKembali;
+    public void setTglDikembalikan(String tglDikembalikan) {
+        this.tglDikembalikan = tglDikembalikan;
     }
+
+    public String getTerlambat() {
+        return terlambat;
+    }
+
+    public void setTerlambat(String terlambat) {
+        this.terlambat = terlambat;
+    }
+
+    public String getDenda() {
+        return denda;
+    }
+
+    public void setDenda(String denda) {
+        this.denda = denda;
+    }
+    
 }
