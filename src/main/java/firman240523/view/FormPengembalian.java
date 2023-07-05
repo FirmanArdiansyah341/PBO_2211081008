@@ -4,6 +4,10 @@
  */
 package firman240523.view;
 
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author ASUS iD
@@ -17,6 +21,35 @@ public class FormPengembalian extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JTable getTabelPengembalian() {
+        return tabelPengembalian;
+    }
+
+    public JTextField getTxtDenda() {
+        return txtDenda;
+    }
+
+    public JTextField getTxtTerlambat() {
+        return txtTerlambat;
+    }
+
+    public JTextField getTxtTglDikembalikan() {
+        return txtTglDikembalikan;
+    }
+
+    public JTextField getTxtTglPinjam() {
+        return txtTglPinjam;
+    }
+
+    public JComboBox<String> getCboKodeBuku() {
+        return cboKodeBuku;
+    }
+
+    public JComboBox<String> getCboNobp() {
+        return cboNobp;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,36 +59,26 @@ public class FormPengembalian extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtTglPinjam = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtDenda = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtTglDikembalikan = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtTerlambat = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelPengembalian = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        cboNobp = new javax.swing.JComboBox<>();
+        cboKodeBuku = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
-
-        jLabel1.setText("Nama Anggota");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 40, 110, 16);
 
         jLabel2.setText("No. Bp");
         getContentPane().add(jLabel2);
@@ -63,84 +86,61 @@ public class FormPengembalian extends javax.swing.JFrame {
 
         jLabel3.setText("Kode Buku");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 70, 104, 16);
-
-        jLabel4.setText("Judul Buku");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 110, 98, 16);
+        jLabel3.setBounds(20, 40, 104, 16);
 
         jLabel5.setText("Denda");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(330, 190, 81, 16);
+        jLabel5.setBounds(20, 170, 81, 16);
 
-        jLabel6.setText("Tgl Kembali");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 190, 90, 16);
-
-        jTextField1.setText("jTextField1");
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(140, 10, 440, 22);
-
-        jTextField2.setText("jTextField2");
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(140, 40, 440, 22);
-
-        jTextField3.setText("jTextField2");
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(140, 70, 440, 22);
-
-        jTextField4.setText("jTextField2");
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(140, 100, 440, 22);
-
-        jTextField5.setText("jTextField2");
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(140, 140, 170, 22);
-
-        jTextField6.setText("jTextField2");
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(140, 180, 170, 22);
+        txtTglPinjam.setText("jTextField2");
+        getContentPane().add(txtTglPinjam);
+        txtTglPinjam.setBounds(140, 70, 440, 22);
 
         jLabel7.setText("Tgl Dikembalikan");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 220, 100, 16);
+        jLabel7.setBounds(20, 110, 100, 16);
 
-        jTextField7.setText("jTextField2");
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(400, 190, 170, 22);
+        txtDenda.setText("jTextField2");
+        getContentPane().add(txtDenda);
+        txtDenda.setBounds(140, 170, 440, 22);
 
         jLabel8.setText("Tgl Pinjam");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 150, 81, 16);
+        jLabel8.setBounds(20, 80, 81, 16);
 
-        jTextField8.setText("jTextField2");
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(140, 220, 170, 22);
+        txtTglDikembalikan.setText("jTextField2");
+        getContentPane().add(txtTglDikembalikan);
+        txtTglDikembalikan.setBounds(140, 100, 440, 22);
 
         jLabel9.setText("Terlambat");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(330, 150, 81, 16);
+        jLabel9.setBounds(20, 140, 81, 16);
 
-        jTextField9.setText("jTextField2");
-        getContentPane().add(jTextField9);
-        jTextField9.setBounds(400, 150, 170, 22);
+        txtTerlambat.setText("jTextField2");
+        getContentPane().add(txtTerlambat);
+        txtTerlambat.setBounds(140, 130, 440, 22);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelPengembalian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No. Bp", "Nama", "Kode Buki", "Judul", "TglPinjam", "TglKembali", "TglDikembalikan", "Terlambat", "Denda"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelPengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelPengembalianMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelPengembalian);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 300, 630, 170);
+        jScrollPane1.setBounds(0, 270, 630, 200);
 
         jButton1.setText("Delete");
         getContentPane().add(jButton1);
-        jButton1.setBounds(260, 260, 72, 23);
+        jButton1.setBounds(260, 220, 72, 23);
 
         jButton2.setText("Insert");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -149,11 +149,19 @@ public class FormPengembalian extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(20, 260, 72, 23);
+        jButton2.setBounds(20, 220, 72, 23);
 
         jButton3.setText("Update");
         getContentPane().add(jButton3);
-        jButton3.setBounds(140, 260, 72, 23);
+        jButton3.setBounds(140, 220, 72, 23);
+
+        cboNobp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cboNobp);
+        cboNobp.setBounds(140, 10, 440, 22);
+
+        cboKodeBuku.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cboKodeBuku);
+        cboKodeBuku.setBounds(140, 40, 440, 22);
 
         setSize(new java.awt.Dimension(644, 446));
         setLocationRelativeTo(null);
@@ -162,6 +170,10 @@ public class FormPengembalian extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tabelPengembalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelPengembalianMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelPengembalianMouseClicked
 
     /**
      * @param args the command line arguments
@@ -199,28 +211,22 @@ public class FormPengembalian extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cboKodeBuku;
+    private javax.swing.JComboBox<String> cboNobp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tabelPengembalian;
+    private javax.swing.JTextField txtDenda;
+    private javax.swing.JTextField txtTerlambat;
+    private javax.swing.JTextField txtTglDikembalikan;
+    private javax.swing.JTextField txtTglPinjam;
     // End of variables declaration//GEN-END:variables
 }

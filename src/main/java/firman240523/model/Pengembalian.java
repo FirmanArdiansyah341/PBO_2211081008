@@ -13,13 +13,13 @@ public class Pengembalian {
     private String kodeBuku;
     private String tglPinjam;
     private String tglDikembalikan;
-    private String terlambat;
-    private String denda;
+    private int terlambat;
+    private Double denda;
     
     public Pengembalian(){
     
     }
-    public Pengembalian (String nobp, String kodeBuku, String tglPinjam, String tglDikembalikan, String terlambat, String denda){
+    public Pengembalian (String nobp, String kodeBuku, String tglPinjam, String tglDikembalikan, int terlambat, Double denda){
         this.nobp = nobp;
         this.kodeBuku = kodeBuku;
         this.tglPinjam = tglPinjam;
@@ -60,19 +60,19 @@ public class Pengembalian {
         this.tglDikembalikan = tglDikembalikan;
     }
 
-    public String getTerlambat() {
+    public int getTerlambat() {
         return terlambat;
     }
 
-    public void setTerlambat(String terlambat) {
+    public void setTerlambat(int terlambat) {
         this.terlambat = terlambat;
     }
 
-    public String getDenda() {
+    public Double getDenda() {
         return denda;
     }
 
-    public void setDenda(String denda) {
+    public void setDenda(Double denda) {
         this.denda = denda;
     }
     

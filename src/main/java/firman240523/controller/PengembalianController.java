@@ -26,18 +26,51 @@ public class PengembalianController {
    PeminjamanDao peminjamanDao;
    AnggotaDao anggotaDao;
    BukuDao bukuDao;
+   Connection connection;
+   PengembalianDao pengembalianDao;
    
   public PengembalianController(FormPengembalian formPengembalian){
        try {
            this.formPengembalian = formPengembalian;
-           peminjamanDao = new PeminjamanDaoImpl(DatabaseHelper.getConnection());
-           anggotaDao = new AnggotaDaoImpl(DatabaseHelper.getConnection());
-           bukuDao = new BukuDaoImpl(DatabaseHelper.getConnection());
+           connection = DatabaseHelper.getConnection();
+           peminjamanDao = new PeminjamanDaoImpl(connection);
+           anggotaDao = new AnggotaDaoImpl(connection);
+           bukuDao = new BukuDaoImpl(connection);
+           pengembalianDao = new PengembalianDaoImpl(connection);
        } catch (SQLException ex) {
            Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
+  public void clearForm(){
+      formPengembalian.getTxtDenda().setText("");
+      formPengembalian.getTxtTerlambat().setText("");
+      formPengembalian.getTxtTglDikembalikan().setText("");
+      formPengembalian.getTxtTglPinjam().setText("");
+  } 
   
+  public void isiComboAnggota(){
+       try {
+           formPeminjaman.getCboNobp().removeAllItems();
+           List<Anggota> list = anggotaDao.getAll();
+           for (Anggota anggota : list){
+               formPeminjaman.getCboNobp().addItem(anggota.getNobp()+"-"+anggota.getNama());
+           }
+       } catch (SQLException ex) {
+           Logger.getLogger(PeminjamanController.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
+   public void isiComboBuku(){
+       try {
+           formPeminjaman.getCboKodeBuku().removeAllItems();
+           List<Buku> list =bukuDao.getAll();
+           for (Buku buku : list){
+               formPeminjaman.getCboKodeBuku().addItem(buku.getKodeBuku()+"-"+buku.getJudulBuku());
+           }
+       } catch (SQLException ex) {
+           Logger.getLogger(PeminjamanController.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
+   
   public void tampilTabelPeminjaman() {
     try {
         DefaultTableModel tabelModel = (DefaultTableModel) formPeminjaman.getTabelPeminjaman().getModel();

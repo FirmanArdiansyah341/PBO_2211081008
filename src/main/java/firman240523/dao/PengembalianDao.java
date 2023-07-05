@@ -16,4 +16,5 @@ public interface PengembalianDao {
     void delete(Pengembalian pengembalian) throws SQLException;
     Pengembalian getPengembalian(String nobp, String kodebuku, String tglPinjam) throws SQLException;
     public List<Pengembalian> getAll() throws SQLException;
+    int selisihTanggal (String tgl1, String tgl2) throws SQLException;
 }
