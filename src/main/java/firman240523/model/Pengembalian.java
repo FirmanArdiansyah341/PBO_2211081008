@@ -4,6 +4,11 @@
  */
 package firman240523.model;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author ASUS iD
@@ -53,7 +58,10 @@ public class Pengembalian {
     }
 
     public String getTglDikembalikan() {
-        return tglDikembalikan;
+        LocalDate tglDikembalikan = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String tglDikembalikanFormatted = tglDikembalikan.format(formatter);
+        return tglDikembalikanFormatted;
     }
 
     public void setTglDikembalikan(String tglDikembalikan) {
@@ -69,6 +77,7 @@ public class Pengembalian {
     }
 
     public Double getDenda() {
+        double denda = terlambat * 1000;
         return denda;
     }
 

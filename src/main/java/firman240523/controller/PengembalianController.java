@@ -50,42 +50,74 @@ public class PengembalianController {
   
   public void isiComboAnggota(){
        try {
-           formPeminjaman.getCboNobp().removeAllItems();
+           formPengembalian.getCboNobp().removeAllItems();
            List<Anggota> list = anggotaDao.getAll();
            for (Anggota anggota : list){
-               formPeminjaman.getCboNobp().addItem(anggota.getNobp()+"-"+anggota.getNama());
+               formPengembalian.getCboNobp().addItem(anggota.getNobp()+"-"+anggota.getNama());
            }
        } catch (SQLException ex) {
-           Logger.getLogger(PeminjamanController.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
    public void isiComboBuku(){
        try {
-           formPeminjaman.getCboKodeBuku().removeAllItems();
+           formPengembalian.getCboKodeBuku().removeAllItems();
            List<Buku> list =bukuDao.getAll();
            for (Buku buku : list){
-               formPeminjaman.getCboKodeBuku().addItem(buku.getKodeBuku()+"-"+buku.getJudulBuku());
+               formPengembalian.getCboKodeBuku().addItem(buku.getKodeBuku()+"-"+buku.getJudulBuku());
            }
        } catch (SQLException ex) {
-           Logger.getLogger(PeminjamanController.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
-   
-  public void tampilTabelPeminjaman() {
+   public void insert(){
+       try {
+           pengembalian = new Pengembalian();
+           pengembalian.setNobp(formPengembalian.getCboNobp().getSelectedItem().toString().split("-") [0]);
+           pengembalian.setKodeBuku(formPengembalian.getCboKodeBuku().getSelectedItem().toString().split("-") [0]);
+           pengembalian.setTglPinjam(formPengembalian.getTxtTglPinjam().getText());
+           pengembalian.setTglDikembalikan(formPengembalian.getTxtTglDikembalikan().getText());
+           pengembalian.setTerlambat(Integer.parseInt(formPengembalian.getTxtTerlambat().getText()));
+           pengembalian.setDenda(Double.parseDouble(formPengembalian.getTxtDenda().getText()));
+           pengembalianDao.insert(pengembalian);
+           JOptionPane.showMessageDialog(formPengembalian, "Pengembalian Ok");
+       } catch (SQLException ex) {
+           Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
+   public void update(){
+       try {
+           pengembalian.setNobp(formPengembalian.getCboNobp().getSelectedItem().toString().split("-") [0]);
+           pengembalian.setKodeBuku(formPengembalian.getCboKodeBuku().getSelectedItem().toString().split("-") [0]);
+           pengembalian.setTglPinjam(formPengembalian.getTxtTglPinjam().getText());
+           pengembalian.setTglDikembalikan(formPengembalian.getTxtTglDikembalikan().getText());
+           pengembalian.setTerlambat(Integer.parseInt(formPengembalian.getTxtTerlambat().getText()));
+           pengembalian.setDenda(Double.parseDouble(formPengembalian.getTxtDenda().getText()));
+           pengembalianDao.update(pengembalian);
+           JOptionPane.showMessageDialog(formPengembalian, "Pengembalian Ok");
+       } catch (SQLException ex) {
+           Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
+  public void tampilTabelPengembalian() {
     try {
-        DefaultTableModel tabelModel = (DefaultTableModel) formPeminjaman.getTabelPeminjaman().getModel();
+        DefaultTableModel tabelModel = (DefaultTableModel) formPengembalian.getTabelPengembalian().getModel();
         tabelModel.setRowCount(0);
-        List<Peminjaman> list = peminjamanDao.getAll();
-        for (Peminjaman p : list) {
+        List<Pengembalian> list = pengembalianDao.getAll();
+        for (Pengembalian p : list) {
             Anggota anggota = anggotaDao.getAnggota(p.getNobp());
             Buku buku = bukuDao.getBuku(p.getKodeBuku());
+            Peminjaman peminjaman = peminjamanDao.getPeminjaman(p.getNobp(), p.getKodeBuku(),p.getTglPinjam());
             Object[] row = {
-                p.getNobp(),
+                anggota.getNobp(),
                 anggota.getNama(),
-                p.getKodeBuku(),
+                buku.getKodeBuku(),
                 buku.getJudulBuku(),
                 p.getTglPinjam(),
-                p.getTglKembali()
+                peminjaman.getTglKembali(),
+                p.getTglDikembalikan(),
+                p.getTerlambat(),
+                p.getDenda()
             };
             tabelModel.addRow(row);
         }
@@ -93,5 +125,29 @@ public class PengembalianController {
         Logger.getLogger(PeminjamanController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+  public void getPengembalian(){
+       try {
+           pengembalian = new Pengembalian();
+           String kodeAnggota = formPengembalian.getTabelPengembalian().getValueAt(formPengembalian.getTabelPengembalian()
+                   .getSelectedRow(),0).toString();
+           String kodeBuku = formPengembalian.getTabelPengembalian().getValueAt(formPengembalian.getTabelPengembalian()
+                   .getSelectedRow(),2).toString();
+           String tglPinjam = formPengembalian.getTabelPengembalian().getValueAt(formPengembalian.getTabelPengembalian()
+                   .getSelectedRow(),4).toString();
+           Peminjaman peminjaman = peminjamanDao.getPeminjaman(kodeAnggota, kodeBuku, tglPinjam);
+            Anggota anggota = anggotaDao.getAnggota(peminjaman.getNobp());
+           formPengembalian.getCboNobp().setSelectedItem(anggota.getNobp()+"-"+anggota.getNama());
+           Buku buku = bukuDao.getBuku(peminjaman.getKodeBuku());
+           formPengembalian.getCboKodeBuku().setSelectedItem(buku.getKodeBuku()+"-"+buku.getJudulBuku());
+           formPengembalian.getTxtTglPinjam().setText(peminjaman.getTglPinjam());
+           formPengembalian.getTxtTglDikembalikan().setText(pengembalian.getTglDikembalikan());
+           int terlambat = pengembalianDao.selisihTanggal(pengembalian.getTglDikembalikan(), peminjaman.getTglKembali());
+           pengembalian.setTerlambat(terlambat);
+           formPengembalian.getTxtTerlambat().setText(""+terlambat);
+           formPengembalian.getTxtDenda().setText(""+pengembalian.getDenda());
+                   } catch (SQLException ex) {
+           Logger.getLogger(PengembalianController.class.getName()).log(Level.SEVERE, null, ex);
+       }
+  }
 }
  

@@ -4,6 +4,7 @@
  */
 package firman240523.view;
 
+import firman240523.controller.PengembalianController;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -17,8 +18,14 @@ public class FormPengembalian extends javax.swing.JFrame {
     /**
      * Creates new form FormPengembalian
      */
+    PengembalianController controller;
     public FormPengembalian() {
         initComponents();
+        controller = new PengembalianController(this);
+        controller.clearForm();
+        controller.isiComboAnggota();
+        controller.isiComboBuku();
+        controller.tampilTabelPengembalian();
     }
 
     public JTable getTabelPengembalian() {
@@ -152,6 +159,11 @@ public class FormPengembalian extends javax.swing.JFrame {
         jButton2.setBounds(20, 220, 72, 23);
 
         jButton3.setText("Update");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3);
         jButton3.setBounds(140, 220, 72, 23);
 
@@ -169,11 +181,22 @@ public class FormPengembalian extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         controller.insert();
+        controller.tampilTabelPengembalian();
+        controller.clearForm();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tabelPengembalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelPengembalianMouseClicked
         // TODO add your handling code here:
+        controller.getPengembalian();
     }//GEN-LAST:event_tabelPengembalianMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         controller.update();
+        controller.tampilTabelPengembalian();
+        controller.clearForm();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

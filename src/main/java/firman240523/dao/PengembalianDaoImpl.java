@@ -83,14 +83,14 @@ public class PengembalianDaoImpl implements PengembalianDao{
     }
     @Override
     public List<Pengembalian> getAll() throws SQLException {
-     String sql = "SELECT 'anggota'.'nobp', 'anggota'.'nama', buku.'kodebuku', buku.'judulbuku', 'peminjaman'.'tglpinjam', "
-             + "'peminjaman'.'tglkembali', 'pengembalian'.'tgldikembalikan', 'pengembalian'.'terlambat', 'pengembalian'.'denda' " +
-               "FROM 'peminjaman' " +
-               "INNER JOIN 'anggota' ON 'peminjaman'.'nobp' = 'anggota'.'nobp' " +
-               "INNER JOIN 'buku' ON 'peminjaman'.'kodebuku' = 'buku'.'kodebuku' " +
-               "LEFT JOIN 'pengembalian' ON ('peminjaman'.'nobp' = 'pengembalian'.'nobp' " +
-               "AND 'peminjaman'.'kodebuku' = 'pengembalian'.'kodebuku' " +
-               "AND 'peminjaman'.'tglpinjam' = 'pengembalian'.'tglpinjam')";
+     String sql = "SELECT anggota.nobp, anggota.nama, buku.kodebuku, buku.judulbuku, peminjaman.tglpinjam, peminjaman.tglkembali, "
+                       + "pengembalian.tgl_dikembalikan, pengembalian.terlambat, pengembalian.denda "
+                       + "FROM peminjaman "
+                       + "INNER JOIN anggota ON peminjaman.nobp = anggota.nobp "
+                       + "INNER JOIN buku ON peminjaman.kodebuku = buku.kodebuku "
+                       + "LEFT JOIN pengembalian ON (peminjaman.nobp = pengembalian.nobp "
+                       + "AND peminjaman.kodebuku = pengembalian.kodebuku "
+                       + "AND peminjaman.tglpinjam = pengembalian.tglpinjam)";
 
 
         PreparedStatement ps = connection.prepareStatement(sql);
